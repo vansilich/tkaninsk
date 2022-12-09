@@ -262,34 +262,22 @@ if ($err == 0) {
             break;
 
         case 'post':
+            
+            require_once __DIR__ . '/../../class/ExternalApi/RussianPostApi.php';
+
+            $russianPostApi = new RussianPostApi();
+
             $toindex = $postindex;
-            $ves = $ves / 1000;
-            //запрос расчета стоимости отправления из 101000 МОСКВА во ВЛАДИМИР 600000.
-            $ret = russianpostcalc_api_calc("59138c11112d334a081e38a80b3ce5aa", "Nas654321", "630000", $toindex, $ves, $sum);
+            $ves_grams = $ves / 1000;
 
-            if (isset($ret['msg']['type']) && $ret['msg']['type'] == "done") {
-                foreach ($ret['calc'] as $v) {
-                    if ($v['type'] == 'rp_main') {
-                        $price = $v['cost'];
-                    }
-                }
-
-                $price += 50;
-                $dop_ves = $price;
-                //До 2кг – 50руб,  2-3,7кг – 75руб, от 3,7-7кг – 100руб
-                if ($ves > 3.7) $price += 100;
-                elseif ($ves > 2) $price += 75;
-                else $price += 50;
-                $dop_ves .= '=' . $price;
-            }
-            $delivery_price = $price;
+            $delivery_price = $russianPostApi->calcShippingCost($toindex, $ves_grams);
+            
             break;
-        case 'transport': //if($sum<7000) $delivery_price = 100; else $delivery_price = 0;
-            //$delivery_price = 100;
+        case 'transport':
             $delivery_price = 0;
 
             break;
-        case 'cdek': //if($sum<7000) $delivery_price = 100; else $delivery_price = 0;
+        case 'cdek':
             $delivery_price = 0;
             break;
 
@@ -388,47 +376,5 @@ ves = " . to_sql($ves) . ",
 
 
     header('location: /basket/?done=yes&oid=' . $newoid);
-}
-
-
-function _russianpostcalc_api_communicate($request)
-{
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, "https://russianpostcalc.ru/api_beta_077.php");
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $data = curl_exec($curl);
-
-    curl_close($curl);
-    if ($data === false) {
-        return "10000 server error";
-    }
-
-    $js = json_decode($data, $assoc = true);
-    return $js;
-}
-
-function russianpostcalc_api_calc($apikey, $password, $from_index, $to_index, $weight, $ob_cennost_rub)
-{
-    $request = array("apikey" => $apikey,
-        "method" => "calc",
-        "from_index" => $from_index,
-        "to_index" => $to_index,
-        "weight" => $weight,
-        "ob_cennost_rub" => $ob_cennost_rub
-    );
-
-    if ($password != "") {
-        //если пароль указан, аутентификация по методу API ключ + API пароль.
-        $all_to_md5 = $request;
-        $all_to_md5[] = $password;
-        $hash = md5(implode("|", $all_to_md5));
-        $request["hash"] = $hash;
-    }
-
-    $ret = _russianpostcalc_api_communicate($request);
-
-    return $ret;
 }
 ?>

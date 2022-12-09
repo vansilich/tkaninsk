@@ -74,8 +74,8 @@ if($action == 'update_basket' ){
 		$_SESSION['basket_catalog'] = $cart_b;
 	}
 }
-
 ?>
+
 <div>
 <div id="basket">
 <?
