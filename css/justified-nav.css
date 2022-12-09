@@ -1,0 +1,82 @@
+
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: left;
+ 
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Customize the nav-justified links to be fill the entire space of the .navbar */
+
+.nav-justified {
+
+  
+}
+.masthead{
+	/*margin-bottom:20px;*/
+	
+	}
+
+
+.nav-justified > li > a {
+ 
+ 
+  margin-bottom: 0;
+
+  color: #fff;
+  text-align: center;
+  
+}
+.nav-justified > .active > a,
+.nav-justified > .active > a:hover,
+.nav-justified > .active > a:focus {
+color:#ffc905;
+}
+.nav-justified > li:first-child > a {
+ 
+}
+.nav-justified > li:last-child > a {
+  border-bottom: 0;
+ 
+}
+
+
+.nav-justified a:hover {
+ color:#ffc905;
+}
+
+
+@media (min-width: 768px) {
+  
+  .nav-justified > li > a {
+   
+  }
+  .nav-justified > li:first-child > a {
+ 
+  }
+  .nav-justified > li:last-child > a {
+  
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .masthead,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

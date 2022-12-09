@@ -1,0 +1,33 @@
+php_value session.use_only_cookies on
+php_value magic_quotes_gpc off
+php_value display_errors off
+ErrorDocument 404 /404.html
+RewriteEngine On
+RewriteBase /
+
+
+RewriteCond %{DOCUMENT_ROOT}/site/%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/site/%{REQUEST_URI} -d
+RewriteRule "." /site%{REQUEST_URI} [L,QSA]
+
+RewriteRule ^sitemap.xml$ /sitemap.php  [L,QSA]
+RewriteRule ^robots.txt$ /robots.php  [L,QSA]
+
+
+
+
+RewriteRule ^docs/library/(.*)/$ /site/docs/library/?cat_cpu=$1  [L,QSA]
+RewriteRule ^docs/library/(.*).html$ /site/docs/library/?cpu=$1  [L,QSA]
+
+RewriteRule ^catalog/(.*)/$ /site/catalog/?cat_cpu=$1  [L,QSA]
+RewriteRule ^goods/(.*)/$ /site/catalog/?cpu=$1  [L,QSA]
+
+RewriteRule ^news/(.*)/$ /site/news/?cpu=$1  [L,QSA]
+
+
+#RewriteCond %{REQUEST_URI} (.*/[^/.]+)($|\?)
+#RewriteRule .* %1/ [R=301,L,QSA]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]

@@ -1,0 +1,188 @@
+/*
+* 	Owl Carousel Owl Demo Theme 
+*	v1.3.3
+*/
+
+.owl-theme .owl-controls{
+    text-align: right;
+    margin: 0px auto 0 auto;
+}
+
+.owl-theme{
+	padding:0px;	
+}
+
+/* Styling Next and Prev buttons */
+
+.owl-theme .owl-controls .owl-buttons div{
+/*	color: #FFF;
+	zoom: 1;
+	margin: 5px;
+	padding: 3px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	background: #869791;
+	opacity: 0.5;*/
+}
+.owl-prev{
+	top:50%;
+	position:absolute;
+	z-index:10;
+	background:url(left.png);
+	width:61px;
+	height:61px;
+	left:-70px;
+	margin-top:-25px;
+		text-indent:-9999px;
+}
+
+.owl-next{
+	text-indent:-9999px;
+	top:50%;
+	position:absolute;
+	z-index:10;
+	background:url(right.png);
+	width:61px;
+	height:61px;
+	right:-70px;
+	margin-top:-25px;
+}
+
+
+.blueowl .owl-buttons {
+    background-color: #4da5ed;
+    width: 50px;
+    padding: 0 10px;
+    height: 39px;
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 6px;
+	top:0;
+	position:absolute;
+	z-index:9;
+	right:0px;
+	margin-top:-45px;
+}
+.blueowl .owl-prev{
+	top:0;
+	position:absolute;
+	z-index:10;
+	background:url(/img/left.png);
+	width:14px;
+	height:27px;
+	left:5px;
+	margin-top:5px;
+}
+
+.blueowl .owl-next{
+	top:0;
+	position:absolute;
+	z-index:10;
+	background:url(/img/right.png);
+	width:14px;
+	height:27px;
+	right:5px;
+	margin-top:5px;	
+}
+/* Clickable class fix problem with hover on touch devices */
+/* Use it for non-touch hover action */
+.owl-theme .owl-controls.clickable .owl-buttons div:hover{
+	filter: Alpha(Opacity=100);/*IE7 fix*/
+	opacity: 1;
+	text-decoration: none;
+}
+
+/* Styling Pagination*/
+
+.owl-theme .owl-controls .owl-page{
+	display: inline-block;
+	zoom: 1;
+	*display: inline;/*IE7 life-saver */
+}
+.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 12px;
+	height: 12px;
+	margin: 5px 7px;
+	filter: Alpha(Opacity=50);/*IE7 fix*/
+	opacity: 0.5;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background: #869791;
+}
+
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	filter: Alpha(Opacity=100);/*IE7 fix*/
+	opacity: 1;
+}
+
+/* If PaginationNumbers is true */
+
+.owl-theme .owl-controls .owl-page span.owl-numbers{
+	height: auto;
+	width: auto;
+	color: #FFF;
+	padding: 2px 10px;
+	font-size: 12px;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+
+/* preloading images */
+.owl-item.loading{
+	min-height: 150px;
+	background: url(AjaxLoader.gif) no-repeat center center
+}
+.owl-item, .item{
+	text-align:center;	
+}
+
+.synced{ /*border:1px solid red;*/}
+
+#bar{
+    width: 0%;
+    max-width: 100%;
+    height: 2px;
+    background: #0078e8;
+    border-right: 2px solid #fff;
+    filter: Alpha(Opacity=80);
+    opacity: 0.8;
+}
+.progressBar{
+    width: 100%;
+    background: #eee;
+    position: absolute;
+    top: 0px;
+    filter: Alpha(Opacity=50);
+    opacity: 0.5;
+    z-index: 1;/*ipad fix*/
+}
+
+.owl-theme .owl-dots .owl-dot{display:inline-block;zoom:1;*display:inline; margin-top:20px;
+
+
+
+}
+.owl-theme .owl-dots .owl-dot span{
+width: 13px;
+	height: 23px;
+	background: #8a8a8a;
+	-moz-border-radius: 23px / 30px;
+	-webkit-border-radius: 23px / 30px;
+	border-radius: 23px / 30px;
+	margin-left:5px;
+	 -moz-transform: rotate(35deg); /* Äëÿ Firefox */
+    -ms-transform: rotate(35deg); /* Äëÿ IE */
+    -webkit-transform: rotate(35deg); /* Äëÿ Safari, Chrome, iOS */
+    -o-transform: rotate(35deg); /* Äëÿ Opera */
+    transform: rotate(35deg);	
+	
+	
+	display:block;-webkit-backface-visibility:visible;-webkit-transition:opacity 200ms ease;-moz-transition:opacity 200ms ease;-ms-transition:opacity 200ms ease;-o-transition:opacity 200ms ease;transition:opacity 200ms ease;}
+.owl-theme .owl-dots .owl-dot.active span,.owl-theme .owl-dots .owl-dot:hover span{background:#790f1f}
